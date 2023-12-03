@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eFitnessApp.Views.MealsCreateUpdatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <StackLayout Padding="20,20,20,20">
+        <Entry Placeholder="Name" Text="{Binding SelectedMeal.Name}" />
+        <Entry Placeholder="Nutrition Type" Text="{Binding SelectedMeal.NutritionType}" />
+        <Entry Keyboard="Numeric" Text="{Binding SelectedMeal.Frequency}" />
+
+        <PanCake:PancakeView
+            Margin="0,10,0,0"
+            CornerRadius="20"
+            HeightRequest="200"
+            WidthRequest="200">
+            <Image Aspect="AspectFill" Source="{Binding SelectedMealImageUrl}" />
+        </PanCake:PancakeView>
+
+        <Button
+            Margin="0,10,0,0"
+            BackgroundColor="{StaticResource Orange}"
+            Command="{Binding PickFileCommand}"
+            CornerRadius="20"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="50"
+            Text="Pick Image"
+            TextColor="{StaticResource White}"
+            VerticalOptions="Center"
+            WidthRequest="150" />
+
+        <Button
+            Margin="0,10,0,0"
+            BackgroundColor="{StaticResource Orange}"
+            Command="{Binding MealSaveCommand}"
+            CornerRadius="20"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="50"
+            Text="Save"
+            TextColor="{StaticResource White}"
+            VerticalOptions="Center"
+            WidthRequest="150" />
+    </StackLayout>
+</ContentPage>

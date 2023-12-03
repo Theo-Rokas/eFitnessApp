@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eFitnessApp.Views.MealsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:helpers="clr-namespace:eFitnessApp.Helpers">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding MealCreateUpdateCommand}" CommandParameter="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static helpers:FAIcons.CirclePlus}"
+                    Size="20" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Command="{Binding MealDeleteCommand}" CommandParameter="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static helpers:FAIcons.CircleMinus}"
+                    Size="20" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            RowSpacing="0">
+
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalOptions="Start">
+                <PanCake:PancakeView Grid.Row="1">
+                    <CollectionView
+                        x:Name="MealsCollectionView"
+                        ItemsSource="{Binding Meals}"
+                        VerticalScrollBarVisibility="Never">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Padding="10,20,20,10"
+                                    ColumnDefinitions="120, 120, 30, 30"
+                                    RowDefinitions="Auto,Auto,Auto">
+                                    <PanCake:PancakeView
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        CornerRadius="20"
+                                        HeightRequest="100"
+                                        WidthRequest="100">
+                                        <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
+                                    </PanCake:PancakeView>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Padding="10,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding Name}"
+                                        TextColor="{StaticResource Black}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Padding="10,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        Text="{Binding NutritionType}"
+                                        TextColor="{StaticResource Orange}" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        Padding="10,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        Text="{Binding Frequency}"
+                                        TextColor="{StaticResource Gray}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="3"
+                                        FontFamily="FASolid"
+                                        FontSize="20"
+                                        HorizontalOptions="End"
+                                        Text="{x:Static helpers:FAIcons.SquarePen}"
+                                        TextColor="{StaticResource Orange}"
+                                        VerticalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference MealsCollectionView}, Path=BindingContext.MealCreateUpdateCommand}" CommandParameter="{Binding Id}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="4"
+                                        FontFamily="FASolid"
+                                        FontSize="20"
+                                        HorizontalOptions="End"
+                                        Text="{x:Static helpers:FAIcons.Trash}"
+                                        TextColor="{StaticResource Orange}"
+                                        VerticalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference MealsCollectionView}, Path=BindingContext.MealDeleteCommand}" CommandParameter="{Binding Id}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </PanCake:PancakeView>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

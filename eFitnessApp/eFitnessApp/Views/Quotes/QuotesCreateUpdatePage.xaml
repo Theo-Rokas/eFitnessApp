@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="eFitnessApp.Views.QuotesCreateUpdatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout Padding="20,20,20,20">
+        <Entry Placeholder="Author" Text="{Binding SelectedQuote.Author}" />
+        <Editor
+            HeightRequest="200"
+            Placeholder="Words"
+            Text="{Binding SelectedQuote.Words}"
+            WidthRequest="200" />
+
+        <Button
+            Margin="0,10,0,0"
+            BackgroundColor="{StaticResource Orange}"
+            Command="{Binding QuoteSaveCommand}"
+            CornerRadius="20"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="50"
+            Text="Save"
+            TextColor="{StaticResource White}"
+            VerticalOptions="Center"
+            WidthRequest="150" />
+    </StackLayout>
+</ContentPage>
