@@ -16,17 +16,17 @@ namespace eFitnessApp.Helpers
     /// </summary>
     public class S3Helper
     {
-        private static readonly string _bucketName = "efitnessappbucket";
-        private static readonly string _accessKey = "AKIATTDYIGSFREAXORKE";
-        private static readonly string _secretKey = "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";
+        private static readonly string _bucketName = "Put bucket name here";
+        private static readonly string _accessKey = "Put access key here";
+        private static readonly string _secretKey = "Put secret key here";
         private static readonly RegionEndpoint _bucketRegion = RegionEndpoint.EUCentral1;
 
 
 
-        private static readonly string _exerciseDefaultImageUrl = "https://efitnessappbucket.s3.eu-central-1.amazonaws.com/default-image.jpg";
+        private static readonly string _exerciseDefaultImageUrl = "Put exercise default image url here";
         public static string GetExerciseDefaultImageUrl() { return _exerciseDefaultImageUrl; }
 
-        private static readonly string _mealDefaultImageUrl = "https://efitnessappbucket.s3.eu-central-1.amazonaws.com/default-image-2.jpg";
+        private static readonly string _mealDefaultImageUrl = "Put meal default image url here";
         public static string GetMealDefaultImageUrl() { return _mealDefaultImageUrl; }
 
 
